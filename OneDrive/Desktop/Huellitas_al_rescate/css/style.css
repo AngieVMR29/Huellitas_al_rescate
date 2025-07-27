@@ -133,9 +133,16 @@ body.main-bg {
     background-color: #5b8f80;
   }
   
-  .logo-fondo img {
-    width: 70px;
-    height: 70px;
-    border-radius: 10px;
+  .logo-fondo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
   }
+  
+  .logo-fondo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+  }
+  
   
