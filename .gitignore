@@ -1,0 +1,23 @@
+# Node.js
+node_modules/
+.env
+package-lock.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Sistemas operativos
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Producción (opcional)
+dist/
+build/
+
+# Laravel o PHP (opcional si usas Laragon)
+vendor/

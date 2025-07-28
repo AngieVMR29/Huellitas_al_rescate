@@ -1,0 +1,8 @@
+.action-icons i {
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#btnAgregar {
+  min-width: 180px;
+}

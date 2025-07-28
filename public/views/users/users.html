@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Usuarios</title>
+  <link rel="stylesheet" href="../../assets/css/user_style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="p-4">
+
+  <div class="container">
+    <!-- Encabezado con botón a la derecha -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2 class="mb-0">Lista de Usuarios</h2>
+      <button class="btn btn-primary" id="btnAgregar">
+        <i class="bi bi-plus-lg"></i> Agregar Usuario
+      </button>
+    </div>
+
+    <!-- Tabla de usuarios -->
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="usuarios-body">
+        <!-- Usuarios cargados por JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Modal Agregar Usuario -->
+  <div class="modal fade" id="modalAgregarUsuario" tabindex="-1" aria-labelledby="modalAgregarUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="formAgregarUsuario">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAgregarUsuarioLabel">Agregar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="nombres" required>
+            </div>
+            <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="apellidos" required>
+            </div>
+            <div class="mb-3">
+              <label for="documento" class="form-label">Documento</label>
+              <input type="text" class="form-control" id="documento" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Ver Usuario -->
+  <div class="modal fade" id="verUsuarioModal" tabindex="-1" aria-labelledby="verUsuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ver Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong>Documento:</strong> <span id="modalDocumento"></span></p>
+          <p><strong>Nombres:</strong> <span id="modalNombre"></span></p>
+          <p><strong>Apellidos:</strong> <span id="modalApellido"></span></p>
+          <p><strong>Correo:</strong> <span id="modalEmail"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar Usuario -->
+  <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="formEditarUsuario">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Editar Usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="editar_id">
+            <div class="mb-3">
+              <label for="editar_nombres" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="editar_nombres" required>
+            </div>
+            <div class="mb-3">
+              <label for="editar_apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="editar_apellidos" required>
+            </div>
+            <div class="mb-3">
+              <label for="editar_documento" class="form-label">Documento</label>
+              <input type="text" class="form-control" id="editar_documento" required>
+            </div>
+            <div class="mb-3">
+              <label for="editar_correo" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="editar_correo" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Eliminar Usuario -->
+  <div class="modal fade" id="modalEliminarUsuario" tabindex="-1" aria-labelledby="modalEliminarUsuarioLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de que deseas eliminar a este usuario?</p>
+          <input type="hidden" id="eliminar_id">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" id="confirmarEliminar">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Cargar usuarios desde el backend
+    function cargarUsuarios() {
+      fetch('http://localhost:3000/usuarios')
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById('usuarios-body');
+          tbody.innerHTML = '';
+
+          data.forEach((usuario, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${usuario.nombres}</td>
+            <td>${usuario.correo || 'N/A'}</td>
+            <td class="action-icons">
+              <i class="bi bi-eye text-primary" data-documento="${usuario.documento}" data-nombres="${usuario.nombres}" data-apellidos="${usuario.apellidos}" data-email="${usuario.correo}" title="Ver"></i>
+              <i class="bi bi-pencil-square text-warning" title="Editar"></i>
+              <i class="bi bi-trash text-danger" title="Eliminar"></i>
+            </td>
+          `;
+            tbody.appendChild(row);
+          });
+
+          // Activar botones de ver
+          document.querySelectorAll('.bi-eye').forEach(icon => {
+            icon.addEventListener('click', () => {
+              document.getElementById('modalDocumento').textContent = icon.dataset.documento;
+              document.getElementById('modalNombre').textContent = icon.dataset.nombres;
+              document.getElementById('modalApellido').textContent = icon.dataset.apellidos;
+              document.getElementById('modalEmail').textContent = icon.dataset.email || 'No especificado';
+
+              new bootstrap.Modal(document.getElementById('verUsuarioModal')).show();
+            });
+          });
+        });
+    }
+
+    // Mostrar modal de agregar
+    document.getElementById('btnAgregar').addEventListener('click', () => {
+      new bootstrap.Modal(document.getElementById('modalAgregarUsuario')).show();
+    });
+
+    // Manejar envío del formulario
+    document.getElementById('formAgregarUsuario').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const nombres = document.getElementById('nombres').value;
+      const apellidos = document.getElementById('apellidos').value;
+      const documento = document.getElementById('documento').value;
+      const correo = document.getElementById('email').value;
+
+      fetch('http://localhost:3000/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombres, apellidos, documento, correo })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error("Error al guardar");
+          return res.json();
+        })
+        .then(data => {
+          bootstrap.Modal.getInstance(document.getElementById('modalAgregarUsuario')).hide();
+          this.reset();
+          cargarUsuarios();
+        })
+        .catch(err => {
+          alert("Hubo un error al guardar el usuario");
+          console.error(err);
+        });
+    });
+
+    // Inicialización
+    cargarUsuarios();
+
+    // Botones de editar y eliminar
+    function attachActions() {
+      document.querySelectorAll('.bi-pencil-square').forEach((icon, idx) => {
+        icon.addEventListener('click', () => {
+          const row = icon.closest('tr');
+          const id = row.children[0].textContent;
+          const nombre = row.children[1].textContent;
+          const correo = row.children[2].textContent;
+
+          fetch(`http://localhost:3000/usuarios`)
+            .then(res => res.json())
+            .then(data => {
+              const usuario = data.find((u, i) => i + 1 == id);
+              if (usuario) {
+                document.getElementById('editar_id').value = usuario.id;
+                document.getElementById('editar_nombres').value = usuario.nombres;
+                document.getElementById('editar_apellidos').value = usuario.apellidos;
+                document.getElementById('editar_documento').value = usuario.documento;
+                document.getElementById('editar_correo').value = usuario.correo;
+
+                new bootstrap.Modal(document.getElementById('modalEditarUsuario')).show();
+              }
+            });
+        });
+      });
+
+      document.querySelectorAll('.bi-trash').forEach((icon, idx) => {
+        icon.addEventListener('click', () => {
+          const row = icon.closest('tr');
+          const id = row.children[0].textContent;
+
+          fetch(`http://localhost:3000/usuarios`)
+            .then(res => res.json())
+            .then(data => {
+              const usuario = data.find((u, i) => i + 1 == id);
+              if (usuario) {
+                document.getElementById('eliminar_id').value = usuario.id;
+                new bootstrap.Modal(document.getElementById('modalEliminarUsuario')).show();
+              }
+            });
+        });
+      });
+    }
+
+    // Enviar formulario editar
+    document.getElementById('formEditarUsuario').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const id = document.getElementById('editar_id').value;
+
+      const data = {
+        nombres: document.getElementById('editar_nombres').value,
+        apellidos: document.getElementById('editar_apellidos').value,
+        documento: document.getElementById('editar_documento').value,
+        correo: document.getElementById('editar_correo').value,
+      };
+
+      fetch(`http://localhost:3000/usuarios/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(res => {
+        if (!res.ok) throw new Error("Error al editar");
+        return res.json();
+      }).then(() => {
+        bootstrap.Modal.getInstance(document.getElementById('modalEditarUsuario')).hide();
+        cargarUsuarios();
+      }).catch(err => {
+        alert("Error al editar");
+        console.error(err);
+      });
+    });
+
+    // Confirmar eliminar
+    document.getElementById('confirmarEliminar').addEventListener('click', () => {
+      const id = document.getElementById('eliminar_id').value;
+
+      fetch(`http://localhost:3000/usuarios/${id}`, {
+        method: 'DELETE'
+      }).then(res => {
+        if (!res.ok) throw new Error("Error al eliminar");
+        bootstrap.Modal.getInstance(document.getElementById('modalEliminarUsuario')).hide();
+        cargarUsuarios();
+      }).catch(err => {
+        alert("Error al eliminar");
+        console.error(err);
+      });
+    });
+
+    // Modifica cargarUsuarios para conectar los botones
+    function cargarUsuarios() {
+      fetch('http://localhost:3000/usuarios')
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.getElementById('usuarios-body');
+          tbody.innerHTML = '';
+
+          data.forEach((usuario, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+          <td>${index + 1}</td>
+          <td>${usuario.nombres}</td>
+          <td>${usuario.correo || 'N/A'}</td>
+          <td class="action-icons">
+            <i class="bi bi-eye text-primary" data-documento="${usuario.documento}" data-nombres="${usuario.nombres}" data-apellidos="${usuario.apellidos}" data-email="${usuario.correo}" title="Ver"></i>
+            <i class="bi bi-pencil-square text-warning" title="Editar"></i>
+            <i class="bi bi-trash text-danger" title="Eliminar"></i>
+          </td>
+        `;
+            tbody.appendChild(row);
+          });
+
+          document.querySelectorAll('.bi-eye').forEach(icon => {
+            icon.addEventListener('click', () => {
+              document.getElementById('modalDocumento').textContent = icon.dataset.documento;
+              document.getElementById('modalNombre').textContent = icon.dataset.nombres;
+              document.getElementById('modalApellido').textContent = icon.dataset.apellidos;
+              document.getElementById('modalEmail').textContent = icon.dataset.email || 'No especificado';
+              new bootstrap.Modal(document.getElementById('verUsuarioModal')).show();
+            });
+          });
+
+          attachActions(); // ⚠️ Activar eventos para editar y eliminar
+        });
+    }
+  </script>
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+</body>
+
+</html>
