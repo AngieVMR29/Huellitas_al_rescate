@@ -39,7 +39,7 @@ body.main-bg {
   }
   
   .btn-login {
-    background-color: #2E7D60; /* Verde oscuro */
+    background-color: #2E7D60; 
     color: #fff;
     font-weight: 600;
     border-radius: 8px;
@@ -67,7 +67,7 @@ body.main-bg {
 }
 
 .sidebar {
-  background-color: #e7dff2;
+  background-color: #B3EFB2;
   width: 80px;
   padding: 10px;
   display: flex;
@@ -99,7 +99,7 @@ body.main-bg {
 .headline {
   display: flex;
   align-items: center;
-  background-color: #f2eef6;
+  background-color: #B3EFB2;
   padding: 15px;
   border-radius: 10px;
 }
@@ -129,21 +129,26 @@ body.main-bg {
   height: 100px;
 }
 
-.arrow-btn {
-  margin-left: auto;
-  background: transparent;
-  border: none;
-  font-size: 20px;
+.flecha img {
+  width: 40px;
+  transition: transform 0.2s ease;
+}
+.flecha:hover img {
+  transform: scale(1.1);
 }
 
-.logout-btn {
-  position: absolute;
+.logout {
+  position: fixed; 
   bottom: 20px;
-  left: 20px;
-  font-size: 20px;
-  background: #e7dff2;
-  border: none;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
+  left: 40px;
+  z-index: 1000;
+  cursor: pointer;
 }
+.logout img {
+  width: 40px;
+  transition: transform 0.2s ease;
+}
+.logout:hover img {
+  transform: scale(1.1);
+}
+
