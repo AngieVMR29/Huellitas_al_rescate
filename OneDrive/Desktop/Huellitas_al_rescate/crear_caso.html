@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Caso</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="crear-caso-body">
+  <div class="crear-caso-container">
+    <div class="crear-caso-header">
+      <h2>Crear caso</h2>
+    </div>
+
+    <form class="crear-caso-form" action="caso_creado.html" method="POST" enctype="multipart/form-data">
+      <div class="form-row">
+        <div>
+          <label>Nombre Animal</label>
+          <input type="text" name="nombre" required>
+        </div>
+        <div>
+          <label>Especie</label>
+          <input type="text" name="especie" required>
+        </div>
+        <div>
+          <label>Raza</label>
+          <input type="text" name="raza">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div>
+          <label>Edad Aprox.</label>
+          <input type="text" name="edad">
+        </div>
+        <div>
+          <label>Fotos</label>
+          <input type="file" name="fotos">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="full-width">
+          <label>Observaciones</label>
+          <textarea name="observaciones" rows="6"></textarea>
+        </div>
+      </div>
+
+      <div class="botones-crear">
+        <a href="principal.html" class=" btn btn-cancelar">Cancelar</a>
+        <a href="principal.html" class=" btn btn-crear">Crear</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

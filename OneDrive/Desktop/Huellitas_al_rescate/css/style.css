@@ -375,3 +375,134 @@ body.main-bg {
   flex-direction: column;
   align-items: center;
 }
+
+/* Crear caso */
+
+/* Estilos exclusivos para la página de creación de casos */
+
+.crear-caso-body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6f3f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.crear-caso-container {
+  background-color: #31795f;
+  padding: 2rem;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.crear-caso-header {
+  background-color: #a5eeb0;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.crear-caso-header h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.8rem;
+}
+
+.crear-caso-form {
+  background-color: #a5eeb0;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row label {
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+  color: #2f4f4f;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: none;
+  background-color: white;
+  font-size: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+.botones-crear {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.btn-crear,
+.btn-cancelar {
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  background-color: #2f6b56;
+  text-decoration: none;
+  transition: background-color 0.3s, transform 0.2s;
+  cursor: pointer;
+}
+
+.btn-cancelar:hover {
+  background-color: #a54242;
+  transform: scale(1.05);
+}
+
+.btn-crear:hover {
+  background-color: #3aa76e;
+  transform: scale(1.05);
+}
+
+.btn-crear-caso {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #3aa76e;
+  color: white;
+  padding: 14px 22px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  z-index: 1000;
+}
+
+.btn-crear-caso:hover {
+  background-color: #3a9440;
+  transform: scale(1.05);
+}
