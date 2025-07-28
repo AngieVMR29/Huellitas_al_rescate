@@ -59,90 +59,91 @@ body.main-bg {
   }
 
 
-/* Estilos para el registro */
+/* Estilos para la pag principal */
 
-.registro-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #2F6B56;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .registro-contenedor {
-    background: white;
-    border-radius: 10px;
-    padding: 2rem;
-    width: 90%;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 2rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .registro-formulario {
-    flex: 1;
-  }
-  
-  .titulo-formulario {
-    background-color: #2F6B56;
-    color: white;
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-    font-size: 1.3rem;
-  }
-  
-  .grupo-campos {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .grupo-campos input {
-    flex: 1;
-    padding: 0.8rem;
-    border-radius: 5px;
-    border: none;
-    background-color: #e6e6e6;
-  }
-  
-  .botones-registro {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 1rem;
-  }
-  
-  .btn-registrarse,
-  .btn-cancelar {
-    background-color: #2F6B56;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  .btn-cancelar {
-    background-color: #5b8f80;
-  }
-  
-  .logo-fondo {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  
-  .logo-fondo img {
-    width: 100px;
-    height: 100px;
-    border-radius: 15px;
-  }
-  
-  
+.main-layout {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  background-color: #e7dff2;
+  width: 80px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.btn-nav {
+  margin-top: 20px;
+  background: #ccc;
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f7fb;
+  position: relative;
+}
+
+.headline {
+  display: flex;
+  align-items: center;
+  background-color: #f2eef6;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.headline-img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.case-list {
+  margin-top: 20px;
+}
+
+.case-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.case-item img {
+  width: 100px;
+  height: 100px;
+}
+
+.arrow-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+}
+
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  background: #e7dff2;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+}
