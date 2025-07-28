@@ -310,7 +310,9 @@ body.main-bg {
   margin-bottom: 1rem;
 }
 
-.grupo-campos input {
+.grupo-campos input[type="text"],
+.grupo-campos input[type="email"],
+.grupo-campos input[type="password"] {
   flex: 1;
   padding: 0.8rem;
   border-radius: 5px;
