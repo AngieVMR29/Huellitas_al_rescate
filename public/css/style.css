@@ -1,0 +1,154 @@
+/* Estilos inicio de sesión */
+body.main-bg {
+    background-color: #f5f2f7;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .brand-panel {
+    background-color: #B3EFB2; /* Verde claro */
+    text-align: center;
+  }
+  
+  .brand-text h1 {
+    color: #fff;
+    font-size: 2.5rem;
+  }
+  
+  .brand-text p {
+    color: #f5f5f5;
+    font-size: 1rem;
+    margin-top: -10px;
+  }
+  
+  .login-box {
+    background-color: #B3EFB2;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  }
+  
+  .login-box h3 {
+    color: #1b3c2f;
+  }
+  
+  .form-control {
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+  }
+  
+  .btn-login {
+    background-color: #2E7D60; 
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  
+  .btn-login:hover {
+    background-color: #25674f;
+  }
+  
+  a {
+    color: #1b3c2f;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+
+/* Estilos para la pag principal */
+
+.main-layout {
+  display: flex;
+  font-family: Arial, sans-serif;
+}
+
+.sidebar {
+  background-color: #B3EFB2;
+  width: 80px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.btn-nav {
+  margin-top: 20px;
+  background: #ccc;
+  border: none;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f7fb;
+  position: relative;
+}
+
+.headline {
+  display: flex;
+  align-items: center;
+  background-color: #B3EFB2;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.headline-img {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.case-list {
+  margin-top: 20px;
+}
+
+.case-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 15px;
+}
+
+.case-item img {
+  width: 100px;
+  height: 100px;
+}
+
+.flecha img {
+  width: 40px;
+  transition: transform 0.2s ease;
+}
+.flecha:hover img {
+  transform: scale(1.1);
+}
+
+.logout {
+  position: fixed; 
+  bottom: 20px;
+  left: 40px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.logout img {
+  width: 40px;
+  transition: transform 0.2s ease;
+}
+.logout:hover img {
+  transform: scale(1.1);
+}
+
